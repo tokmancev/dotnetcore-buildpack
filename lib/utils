@@ -36,15 +36,14 @@ function install_dotnet() {
     curl -sSL ${DOTNET_RUNTIME_DOWNLOAD_URL} | tar xz -C ${DOTNET_CACHE_LOCATION}/runtime
 	
 # install System.Drawing native dependencies
-RUN apt-get update \
+	apt-get update \
     && apt-get install -y --allow-unauthenticated \
         libc6-dev \
         libgdiplus \
         libx11-dev \
      && rm -rf /var/lib/apt/lists/*
 	# soft link
-	RUN ln -s $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libdl-2.24.so /app/heroku_output/libdl.so
-
+	ln -s $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libdl-2.24.so /app/heroku_output/libdl.so
   fi
 
   export PATH="${DOTNET_CACHE_LOCATION}/sdk:$PATH"
