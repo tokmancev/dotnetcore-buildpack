@@ -44,7 +44,7 @@ function install_dotnet() {
         libx11-dev \
      && rm -rf /var/lib/apt/lists/*
 	# soft link
-	RUN ln -s $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libdl-2.24.so /lib/x86_64-linux-gnu/libdl.so
+	RUN ln -s $BUILD_DIR/.apt/usr/lib/x86_64-linux-gnu/libdl-2.24.so /app/heroku_output/libdl.so
   fi
 
   export PATH="${DOTNET_CACHE_LOCATION}/sdk:$PATH"
